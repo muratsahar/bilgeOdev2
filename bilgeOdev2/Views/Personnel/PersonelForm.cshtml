@@ -1,0 +1,45 @@
+﻿@model bilgeOdev2.ViewModels.PersonelFormViewModel
+@{
+    ViewBag.Title = "PersonelForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personel Formu</h2>
+@using (Html.BeginForm("Save","Personnel",FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(x => x.User.Name)
+    @Html.TextBoxFor(m => m.User.Name,new {@class="form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.User.Surname)
+    @Html.TextBoxFor(m => m.User.Surname, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.User.BookId)
+    @Html.DropDownListFor(m => m.User.BookId, new SelectList( Model.Books,"Id","Name" ),"Departman seçiniz",new {@class="form-control"})
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.User.Salary)
+    @Html.TextBoxFor(m => m.User.Salary, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.User.BirthDay)
+    @Html.TextBoxFor(m => m.User.BirthDay, new { @class = "form-control" })
+</div>
+
+<div class="radio">
+    <label>
+        @Html.RadioButtonFor(x => x.User.Gender, true) Erkek
+        
+    </label>
+    <label>
+        @Html.RadioButtonFor(x => x.User.Gender, false) Kadın
+    </label>
+</div>
+<button type="submit" class="btn btn-success">Kaydet</button>
+
+}

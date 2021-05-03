@@ -1,0 +1,41 @@
+﻿@using bilgeOdev2.Models.EntityFramework;
+@model List<User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ActionLink("Yeni Personel Ekle", "New", null, new { @class = "btn btn-success" })
+<h2>Personel Listesi</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Kitap</th>
+            <th>Maaş</th>
+            <th>Yaş</th>
+            <th>Doğum Tarihi</th>
+            <th>Cinsiyet</th>
+            <th>Medeni Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Book.Name</td>
+                <td>@item.Salary</td>
+                <td>@(DateTime.Now.Year - item.BirthDay.Value.Year)</td>
+                <td>@item.BirthDay.Value.ToString("dd-MM-yy")</td>
+                <td>@(item.Gender==true?"erkek":"kadın")</td>
+                <td>@(item.IsMarried == true ? "evli" : "bekar")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

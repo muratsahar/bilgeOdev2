@@ -12,18 +12,17 @@ namespace bilgeOdev2.Models.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Book
+    public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Book()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
+        public Nullable<int> BookId { get; set; }
         public string Name { get; set; }
+        public string Surname { get; set; }
+        public Nullable<short> Salary { get; set; }
+        public Nullable<System.DateTime> BirthDay { get; set; }
+        public Nullable<bool> Gender { get; set; }
+        public Nullable<bool> IsMarried { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual Book Book { get; set; }
     }
 }

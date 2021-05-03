@@ -9,19 +9,20 @@ namespace bilgeOdev2.Controllers
 {
     public class HomeController : Controller
     {
-        bilgeOdevDb2Entities db = new bilgeOdevDb2Entities();
+        bilgeOdevDb2Entities1 db = new bilgeOdevDb2Entities1();
         
         public ActionResult Index()
         {
             var model = db.Books.ToList();
             return View(model);
         }
+
         [HttpGet]
         public ActionResult New()
         {
-            
             return View("New");
         }
+
         [HttpPost] 
         public ActionResult Save(Book book)
         {
@@ -36,13 +37,8 @@ namespace bilgeOdev2.Controllers
                 {
                     return HttpNotFound();
                 }
-                else
-                {
-
-                }
                 book1.Name = book.Name;
             }
-            
             db.SaveChanges();
             return RedirectToAction("Index","Home");
         }
