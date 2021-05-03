@@ -1,0 +1,24 @@
+﻿@model bilgeOdev2.Models.EntityFramework.Book
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<form method="post">
+    <div class="form-group">
+        <label>Kitaap Adi</label>
+        <input type="text" name="Name" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-success">Ekle</button>
+</form>*@
+
+@using (@Html.BeginForm("Save","Home",FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Name)
+        @Html.TextBoxFor(m=>m.Name, new {@class="form-control"})
+    </div>
+    @Html.HiddenFor(v=>v.Id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+} 
+

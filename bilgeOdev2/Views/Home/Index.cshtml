@@ -1,0 +1,26 @@
+﻿@using bilgeOdev2.Models.EntityFramework
+@model List<Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a class="btn btn-warning" type="submit" href="/Home/New">Yeni kitap ekle</a>
+<h2>Kitaplar</h2>
+<table class=" table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Ad</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a class="btn btn-primary" href="/Home/Update/@item.Id" type="">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="/Home/Delete/@item.Id" type="">Sil</a></td>
+        </tr>
+    }
+
+</table>
